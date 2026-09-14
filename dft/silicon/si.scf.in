@@ -1,0 +1,25 @@
+&CONTROL
+  calculation = 'scf'
+  prefix      = 'silicon'
+  outdir      = './tmp'
+  pseudo_dir  = '/home/sanikealamai/qe_pseudo/upf'
+  verbosity   = 'high'
+/
+&SYSTEM
+  ibrav     = 2
+  celldm(1) = 10.26
+  nat       = 2
+  ntyp      = 1
+  ecutwfc   = 40
+  occupations = 'fixed'
+/
+&ELECTRONS
+  conv_thr = 1.0d-8
+/
+ATOMIC_SPECIES
+  Si  28.0855  Si.us.pbe.z_4.ld1.psl.v1.0.0-high.upf
+ATOMIC_POSITIONS (alat)
+  Si  0.00  0.00  0.00
+  Si  0.25  0.25  0.25
+K_POINTS (automatic)
+  8 8 8 0 0 0
