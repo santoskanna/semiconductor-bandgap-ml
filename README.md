@@ -47,3 +47,15 @@ dft/ - Quantum ESPRESSO input/output files for Silicon DFT calculation
 ## Tools Used
 
 Python, pymatgen, mp-api, scikit-learn, pandas, numpy, matplotlib, seaborn, Quantum ESPRESSO, ASE
+
+## Update: Composition-Based Features (Magpie)
+
+Added 132 composition-based Magpie descriptors (matminer) to the original 9 structural features and compared three feature sets with repeated 5-fold CV (3 repeats), using identical folds.
+
+| Feature set | CV R2 | CV MAE (eV) |
+|---|---|---|
+| Structural only | 0.277 +/- 0.183 | 0.742 |
+| Magpie only | 0.450 +/- 0.154 | 0.636 |
+| Structural + Magpie | 0.437 +/- 0.154 | 0.648 |
+
+Composition features improved CV R2 by roughly 0.16, while adding structural features on top gave no clear further gain (the difference is within fold-to-fold noise). Top predictors were the spread of periodic-table group across elements (a proxy for ionic character) and mean d-valence electron count, both consistent with solid-state chemistry. Caveat: the 150 compounds are the first unique formulas from a Materials Project query, not a random sample.
